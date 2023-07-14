@@ -77,9 +77,9 @@ public class MainManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (MenuManager.Instance.BestScore < m_Points)
+        if (MenuManager.Instance.bestScore < m_Points)
         {
-            MenuManager.Instance.BestScore = m_Points;
+            MenuManager.Instance.bestScore = m_Points;
             MenuManager.Instance.Save();
         }
 

@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
     public Button quitButton;
 
     public static MenuManager Instance;
-    public int BestScore;
+    public int bestScore;
 
     public string nameSave;
     public string scoreText;
@@ -66,7 +66,7 @@ public class MenuManager : MonoBehaviour
     {
         SaveData data = new SaveData();
         data.Name = nameSave;
-        data.BestScore = BestScore;
+        data.BestScore = bestScore;
 
         string json = JsonUtility.ToJson(data);
 
@@ -80,8 +80,10 @@ public class MenuManager : MonoBehaviour
         {
             string json = System.IO.File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
+            bestScore = data.BestScore;
+            nameSave = data.Name;
 
-            scoreText = "Best Score : " + data.Name + " : " + data.BestScore;
+            scoreText = "Best Score : " + nameSave + " : " + bestScore;
         }
     }
 }
